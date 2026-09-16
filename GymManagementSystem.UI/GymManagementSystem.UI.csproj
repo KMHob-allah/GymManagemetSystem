@@ -61,6 +61,18 @@
     <Compile Include="Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
+    <Compile Include="Members\frmMemberDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Members\frmMemberDetails.Designer.cs">
+      <DependentUpon>frmMemberDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Members\ucMemberDetails.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Members\ucMemberDetails.Designer.cs">
+      <DependentUpon>ucMemberDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="Members\ucMembersList.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -71,6 +83,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Members\frmMemberDetails.resx">
+      <DependentUpon>frmMemberDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Members\ucMemberDetails.resx">
+      <DependentUpon>ucMemberDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Members\ucMembersList.resx">
       <DependentUpon>ucMembersList.cs</DependentUpon>
@@ -114,6 +132,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Dashboard\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DefaultMale.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DefaultWoman.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -70,7 +70,7 @@ namespace Gym.Members
             lblRecords.Text = "Records: " + dgvMembers.RowCount.ToString();
         }
 
-        private void _RefreshDashboard()
+        private void _Refresh()
         {
             _LoadMembersList();
             _ResetRecords();
@@ -261,16 +261,89 @@ namespace Gym.Members
 
         private void txtSearchBox_KeyPress(object sender, KeyPressEventArgs e)
         {
-            // لو الفلتر المختار هو Member ID، نمنع أي مدخلات غير الأرقام ومفتاح الـ Backspace
             if (cbFilter.SelectedItem != null && cbFilter.SelectedItem.ToString() == "Member ID")
             {
-                // لو الحرف المكتوب مش رقم ومش زرار Backspace (الحذف)
                 if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
                 {
-                    e.Handled = true; // منع ظهور الحرف تماماً
+                    e.Handled = true;
                 }
             }
         }
-    }
 
+        
+
+        private void _ChangeMemberStatus(bool activate)
+        {
+            if (dgvMembers.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Please select a member first.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            var selectedRow = dgvMembers.SelectedRows[0];
+            Member member = selectedRow.Tag as Member;
+
+            if (member == null) return;
+
+            if (member.IsActive == activate)
+            {
+                string statusText = (activate ? "already active" : "already inactive");
+                MessageBox.Show($"This member is {statusText}.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            OperationResult<bool> success;
+
+            if (activate) success = MembersBusiness.ActivateMember(member.MemberID);
+            else success = MembersBusiness.DeactivateMember(member.MemberID);
+
+            if (success.Success)
+            {
+                if (activate) 
+                { 
+                    member.Activate();
+                    selectedRow.Cells["colIsActive"].Value = "Active";
+                }
+                else
+                { 
+                    member.Deactivate(); 
+                    selectedRow.Cells["colIsActive"].Value = "Inactive";
+                }
+
+
+                string actionName = activate ? "activated" : "deactivated";
+                MessageBox.Show($"Member successfully {actionName}.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                _Refresh();     
+            }
+
+            else
+            {
+                MessageBox.Show("Failed to update member status.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void activateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _ChangeMemberStatus(true);
+        }
+
+        private void deactivateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _ChangeMemberStatus(false);
+        }
+
+        private void showDetailsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (dgvMembers.CurrentRow != null)
+            {
+                int memberID = Convert.ToInt32(dgvMembers.CurrentRow.Cells[0].Value);
+
+                frmMemberDetails frm = new frmMemberDetails(memberID);
+                frm.ShowDialog();
+            }
+        }
+    }
 }
+
+

@@ -39,5 +39,15 @@ namespace GymManagementSystem.BLL
             EmergencyPhone = emergencyPhone;
             JoinDate = joinDate;
         }
+
+        public void Activate()
+        {
+            this.IsActive = true;
+        }
+
+        public void Deactivate()
+        {
+            this.IsActive = false;
+        }
     }
 }

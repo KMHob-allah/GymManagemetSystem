@@ -44,11 +44,11 @@
             this.pnlFooter = new System.Windows.Forms.Panel();
             this.lblRecords = new System.Windows.Forms.Label();
             this.pnlToolbar = new System.Windows.Forms.Panel();
+            this.cbGender = new System.Windows.Forms.ComboBox();
             this.txtSearchBox = new System.Windows.Forms.TextBox();
+            this.cbActivation = new System.Windows.Forms.ComboBox();
             this.cbFilter = new System.Windows.Forms.ComboBox();
             this.lblFilterTitle = new System.Windows.Forms.Label();
-            this.cbGender = new System.Windows.Forms.ComboBox();
-            this.cbActivation = new System.Windows.Forms.ComboBox();
             this.pnlHeader.SuspendLayout();
             this.pnlMainContent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMembers)).BeginInit();
@@ -237,45 +237,48 @@
             this.deactivateToolStripMenuItem});
             this.cmsMembers.Name = "cmsMembers";
             this.cmsMembers.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.cmsMembers.Size = new System.Drawing.Size(151, 104);
+            this.cmsMembers.Size = new System.Drawing.Size(181, 126);
             // 
             // showDetailsToolStripMenuItem
             // 
             this.showDetailsToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.showDetailsToolStripMenuItem.Name = "showDetailsToolStripMenuItem";
-            this.showDetailsToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.showDetailsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.showDetailsToolStripMenuItem.Text = "Show Details";
+            this.showDetailsToolStripMenuItem.Click += new System.EventHandler(this.showDetailsToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(147, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
             // 
             // editToolStripMenuItem
             // 
             this.editToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.editToolStripMenuItem.Text = "Edit";
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(147, 6);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(177, 6);
             // 
             // activateToolStripMenuItem
             // 
-            this.activateToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(255)))), ((int)(((byte)(0)))));
+            this.activateToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.activateToolStripMenuItem.Name = "activateToolStripMenuItem";
-            this.activateToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.activateToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.activateToolStripMenuItem.Text = "Activate";
+            this.activateToolStripMenuItem.Click += new System.EventHandler(this.activateToolStripMenuItem_Click);
             // 
             // deactivateToolStripMenuItem
             // 
             this.deactivateToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(92)))), ((int)(((byte)(92)))));
             this.deactivateToolStripMenuItem.Name = "deactivateToolStripMenuItem";
-            this.deactivateToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.deactivateToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.deactivateToolStripMenuItem.Text = "Deactivate";
+            this.deactivateToolStripMenuItem.Click += new System.EventHandler(this.deactivateToolStripMenuItem_Click);
             // 
             // pnlFooter
             // 
@@ -311,6 +314,27 @@
             this.pnlToolbar.Size = new System.Drawing.Size(970, 53);
             this.pnlToolbar.TabIndex = 0;
             // 
+            // cbGender
+            // 
+            this.cbGender.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(30)))), ((int)(((byte)(34)))));
+            this.cbGender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbGender.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbGender.Font = new System.Drawing.Font("Segoe UI", 9.5F);
+            this.cbGender.ForeColor = System.Drawing.Color.White;
+            this.cbGender.FormattingEnabled = true;
+            this.cbGender.Items.AddRange(new object[] {
+            "None",
+            "MemberID",
+            "Name",
+            "Area",
+            "Gender",
+            "IsActive"});
+            this.cbGender.Location = new System.Drawing.Point(298, 10);
+            this.cbGender.Name = "cbGender";
+            this.cbGender.Size = new System.Drawing.Size(220, 25);
+            this.cbGender.TabIndex = 3;
+            this.cbGender.SelectedIndexChanged += new System.EventHandler(this.cbGender_SelectedIndexChanged);
+            // 
             // txtSearchBox
             // 
             this.txtSearchBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(30)))), ((int)(((byte)(34)))));
@@ -323,6 +347,27 @@
             this.txtSearchBox.TabIndex = 2;
             this.txtSearchBox.TextChanged += new System.EventHandler(this.txtSearchBox_TextChanged);
             this.txtSearchBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSearchBox_KeyPress);
+            // 
+            // cbActivation
+            // 
+            this.cbActivation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(30)))), ((int)(((byte)(34)))));
+            this.cbActivation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbActivation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbActivation.Font = new System.Drawing.Font("Segoe UI", 9.5F);
+            this.cbActivation.ForeColor = System.Drawing.Color.White;
+            this.cbActivation.FormattingEnabled = true;
+            this.cbActivation.Items.AddRange(new object[] {
+            "None",
+            "MemberID",
+            "Name",
+            "Area",
+            "Gender",
+            "IsActive"});
+            this.cbActivation.Location = new System.Drawing.Point(298, 10);
+            this.cbActivation.Name = "cbActivation";
+            this.cbActivation.Size = new System.Drawing.Size(220, 25);
+            this.cbActivation.TabIndex = 4;
+            this.cbActivation.SelectedIndexChanged += new System.EventHandler(this.cbActivation_SelectedIndexChanged);
             // 
             // cbFilter
             // 
@@ -355,48 +400,6 @@
             this.lblFilterTitle.Size = new System.Drawing.Size(51, 19);
             this.lblFilterTitle.TabIndex = 0;
             this.lblFilterTitle.Text = "Filter :";
-            // 
-            // cbGender
-            // 
-            this.cbGender.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(30)))), ((int)(((byte)(34)))));
-            this.cbGender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbGender.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cbGender.Font = new System.Drawing.Font("Segoe UI", 9.5F);
-            this.cbGender.ForeColor = System.Drawing.Color.White;
-            this.cbGender.FormattingEnabled = true;
-            this.cbGender.Items.AddRange(new object[] {
-            "None",
-            "MemberID",
-            "Name",
-            "Area",
-            "Gender",
-            "IsActive"});
-            this.cbGender.Location = new System.Drawing.Point(298, 10);
-            this.cbGender.Name = "cbGender";
-            this.cbGender.Size = new System.Drawing.Size(220, 25);
-            this.cbGender.TabIndex = 3;
-            this.cbGender.SelectedIndexChanged += new System.EventHandler(this.cbGender_SelectedIndexChanged);
-            // 
-            // cbActivation
-            // 
-            this.cbActivation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(30)))), ((int)(((byte)(34)))));
-            this.cbActivation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbActivation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cbActivation.Font = new System.Drawing.Font("Segoe UI", 9.5F);
-            this.cbActivation.ForeColor = System.Drawing.Color.White;
-            this.cbActivation.FormattingEnabled = true;
-            this.cbActivation.Items.AddRange(new object[] {
-            "None",
-            "MemberID",
-            "Name",
-            "Area",
-            "Gender",
-            "IsActive"});
-            this.cbActivation.Location = new System.Drawing.Point(298, 10);
-            this.cbActivation.Name = "cbActivation";
-            this.cbActivation.Size = new System.Drawing.Size(220, 25);
-            this.cbActivation.TabIndex = 4;
-            this.cbActivation.SelectedIndexChanged += new System.EventHandler(this.cbActivation_SelectedIndexChanged);
             // 
             // ucMembersList
             // 
